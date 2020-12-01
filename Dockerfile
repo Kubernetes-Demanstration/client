@@ -1,6 +1,6 @@
 ### STAGE 1: Build ###
 FROM node:12.16.1-alpine AS compile-image
-### ENV NODE_DEBUG fs,module,http,https ###
+### ENV NODE_DEBUG fs,module,http,https 
 WORKDIR /opt/ng
 COPY package.json package-lock.json ./
 
@@ -9,7 +9,7 @@ Run npm config set strict-ssl false
 
 RUN npm install
 COPY . .
-ENV PATH="./node_modules/.bin:$PATH"  ###
+ENV PATH="./node_modules/.bin:$PATH"
 
 RUN ng build --prod
 ### STAGE 2: Run ###
