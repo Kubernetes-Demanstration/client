@@ -1,7 +1,7 @@
 ### STAGE 1: Build ###
-ENV NODE_DEBUG=fs,module,http,https
-FROM node:12.16.1-alpine AS compile-image
 
+FROM node:12.16.1-alpine AS compile-image
+ENV NODE_DEBUG fs,module,http,https
 WORKDIR /opt/ng
 COPY package.json package-lock.json ./
 
