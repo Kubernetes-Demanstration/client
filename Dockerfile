@@ -3,7 +3,7 @@
 FROM node:12.16.1-alpine AS compile-image
 ENV NODE_DEBUG fs,module,http,https
 WORKDIR /opt/ng
-COPY package.json package-lock.json ./
+COPY package.json  ./
 
 
 Run npm config set strict-ssl false
