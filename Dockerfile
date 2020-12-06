@@ -7,6 +7,8 @@ COPY package.json package-lock.json ./
 
 Run npm config set strict-ssl false
 
+#test ping
+RUN ping registry.npmjs.org
 RUN npm install
 COPY . .
 ENV PATH="./node_modules/.bin:$PATH"
