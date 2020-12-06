@@ -8,9 +8,10 @@ COPY package.json package-lock.json ./
 Run npm config set strict-ssl false
 
 #test ping
-RUN npm update npm -g
+
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm config set strict-ssl false
+RUN npm update npm -g
 RUN npm install
 COPY . .
 ENV PATH="./node_modules/.bin:$PATH"
