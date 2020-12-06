@@ -11,7 +11,10 @@ Run npm config set strict-ssl false
 
 RUN npm config set registry http://registry.npmjs.org/
 RUN npm config set strict-ssl false
+RUN npm config rm proxy
+RUN npm config rm https-proxy
 RUN npm update npm -g
+
 RUN npm install
 COPY . .
 ENV PATH="./node_modules/.bin:$PATH"
