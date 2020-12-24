@@ -18,7 +18,7 @@ export class AccountService {
               private router: Router) { }
 
   login(email: string, password: string): Observable<void> {
-   return this.httpClient.post<IUser>(this.baseUrl + '/account/login', { Email: email, Password: password })
+   return this.httpClient.post<IUser>(this.baseUrl + 'account/login', { Email: email, Password: password })
    .pipe(map((user: IUser) => {
      if (user) {
       localStorage.setItem('token', user.token);
@@ -28,7 +28,7 @@ export class AccountService {
   }
 
   register(displayName: string, email: string, password: string): Observable<void> {
-    return this.httpClient.post(this.baseUrl + '/account/register', {DisplayName: displayName, Email: email, Password: password})
+    return this.httpClient.post(this.baseUrl + 'account/register', {DisplayName: displayName, Email: email, Password: password})
     .pipe(map((user: IUser) => {
       localStorage.setItem('token', user.token);
       this.currentUserSource.next(user);
@@ -42,7 +42,7 @@ export class AccountService {
   }
 
   checkEmailExists(email: string): Observable<boolean> {
-    return this.httpClient.get<boolean>(this.baseUrl + '/account/emailexists?email=' + email);
+    return this.httpClient.get<boolean>(this.baseUrl + 'account/emailexists?email=' + email);
   }
 
   loadCurrentUser(token: string): Observable<void> {
@@ -53,7 +53,7 @@ export class AccountService {
 
    let headers = new HttpHeaders();
    headers = headers.set('Authorization', `Bearer ${token}`);
-   return this.httpClient.get<IUser>(this.baseUrl + '/account', {headers}).pipe(
+   return this.httpClient.get<IUser>(this.baseUrl + 'account', {headers}).pipe(
       map((user: IUser) => {
           if (user) {
             localStorage.setItem('token', user.token);
@@ -64,7 +64,7 @@ export class AccountService {
   }
 
   getUserAddress(): Observable<IAddress>{
-   return this.httpClient.get<IAddress>(this.baseUrl + '/account/address');
+   return this.httpClient.get<IAddress>(this.baseUrl + 'account/address');
  }
 
  updateUserAddress(address: IAddress): Observable<IAddress> {
