@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## where is current repository located in ? mark as red border following
-
+```mermaid
 graph TD;
   User-.make a request by.->Brower;
   Developer --git commit --> Github;
@@ -26,3 +26,4 @@ graph TD;
    jenkisn --rolling-update  --> angularAppDeployment;
   jenkisn -- rolling-update  --> .netCoreWebAPIDepoyment;
   end;
+```
