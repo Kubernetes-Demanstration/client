@@ -6,22 +6,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## where is current repository located in ? mark as red border following
+```mermaid
+graph TD;
+  User-.make a request by.->Brower;
+  Developer --git commit --> Github;
+  Github --github action  -->Ingress-Nginx;
+  Ingress-Nginx--triggle build --> jenkisn;
+  Brower -- over network --> Ingress-Nginx;
+  Ingress-Nginx--> clientService;
+  subgraph  kubernetes cluster
+  Ingress-Nginx --> APIService;
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+  clientService--> angularAppDeployment;
+  style angularAppDeployment fill:#FFF200,stroke:#FF0000,stroke-width:4px,fill-opacity:0.5;
+  APIService -->.netCoreWebAPIDepoyment;
+  .netCoreWebAPIDepoyment--> mssqlDbs;
+  .netCoreWebAPIDepoyment--> redisCache;
+   jenkisn --rolling-update  --> angularAppDeployment;
+  jenkisn -- rolling-update  --> .netCoreWebAPIDepoyment;
+  end;
+```
